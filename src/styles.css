@@ -1,0 +1,171 @@
+:root {
+  --color-bg: #f7f7f7;
+  --color-surface: #ffffff;
+  --color-border: #dddddd;
+  --color-primary: #2563eb;
+  --color-accent: #3b82f6;
+  --color-text: #333333;
+  --color-muted: #666666;
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-border: #444444;
+  --color-text: #e0e0e0;
+  --color-muted: #777777;
+}
+
+/* System font stack */
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 1rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header with gradient */
+.header {
+  width: 100%;
+  padding: 1.5rem 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Dark mode toggle button spacing */
+.toggle-button {
+  margin-top: 0.75rem;
+}
+
+/* Main card */
+.container {
+  width: 100%;
+  max-width: 640px;
+  margin: 2rem auto;
+  background: var(--color-surface);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  padding: 2rem;
+  animation: fadeInUp 0.35s ease both;
+  transition: background 0.2s ease;
+}
+
+/* Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Square */
+.square {
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.square:hover {
+  background: var(--color-muted);
+}
+.square:active {
+  transform: scale(0.97);
+}
+.square:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Primary button */
+.primary-button {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.primary-button:hover {
+  filter: brightness(0.9);
+}
+.primary-button:active {
+  transform: scale(0.97);
+}
+.primary-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Info components */
+.player-turn,
+.win-condition,
+.scoreboard {
+  font-size: 1.125rem;
+  margin: 0.75rem 0;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  .player-turn,
+  .win-condition,
+  .scoreboard {
+    font-size: 1rem;
+  }
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
